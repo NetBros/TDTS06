@@ -9,10 +9,13 @@
   * Me (Source:) 10.255.137.7
   * Server (Destination:) 128.119.245.12
 4. What is the status code returned from the server to your browser?
-  * 
+  * We don't have one
 5. When was the HTML file that you are retrieving last modified at the server?
   * If-Modified-Since: Wed, 31 Aug 2016 05:59:01 GMT\r\n
 6. How many bytes of content are being returned to your browser?
-  * 
+  * 502 and 509 depending on computer
 7. By inspecting the raw data in the "packet bytes" pane, do you see any http headers within the data that are not displayed in the "packet details" pane? If so, name one.
+ * Nej
+
+
 
