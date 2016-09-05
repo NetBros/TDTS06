@@ -33,7 +33,7 @@
 14. What is the status code and phrase associated with the response to the HTTP GET request?
  * 200 "OK"
 15. Is there any HTTP header information in the transmitted data associated with TCP segmentation? For this question you may want to think about at what layer each protocol operates, and how the protocols at the different layers interoperate
- * Det finns information om IP-adress och vilken port den ska till.
+ * Nej, detta är en av sakerna som krävs för att det ska ses som layered. Protokolet under har inte koll på hur
 16. How many HTTP GET request messages were sent by your browser? To which Internet addresses were these GET requests sent?
  * 2 get requests till en en IP-adress och två till en annan.
 17. Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel? Explain.
@@ -45,7 +45,7 @@
  * Authorization
 
 20. What does the "Connection: close" and "Connection: Keep-alive" header field imply in HTTP protocol? When should one be used over the other?
- * Skillnaden i connection close och connection keep-alive verkar vara att connection close görs efter något hämtas från en en annan    server än den man besöker så som en bild eller fil som finns på den sidan man besöker. Connection keep-alvie är på den sidan man     besöker.
+ * Skillnaden i connection close och connection keep-alive verkar vara att connection close görs efter något hämtas från en en annan server än den man besöker så som en bild eller fil som finns på den sidan man besöker. Connection keep-alvie är på den sidan man besöker.
 
 # Summary part A
 Första kollade vi lite grundläggande och kollade på IP-adresser. Lärde sig lite om HTTP , vad varje del av GET var och vad för information som fanns i varje subdel.
@@ -58,7 +58,5 @@ I fjärde delen så kollar vi på hur det görs när bilder på en sida måste h
 # Summary part E
 Femte delen så kollar vad som händer när en hemsida är lösenordsskyddad vad som skickas i get-request mm.
 # Summary part E+
-Connection close kommer användas då en sida som enligt uppgift inte får hämtas, istället för att ladda in sidan så används connection close. Sidor som är godkände ska då tsället ha connection keep-alive. 
-
-
+Connection close kommer användas då data från hemsidan laddas in på proxy-servern, vid connection close får vi reda på hur mycket data som finns i bodyn. Använder vi keep alive så vet vi inte när vi laddat in hela sidan och kan därför inte börja bearbeta datan och skicka vidare den till clienten.
 
