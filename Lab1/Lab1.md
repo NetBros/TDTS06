@@ -32,6 +32,17 @@
  * 200 "OK"
 15. Is there any HTTP header information in the transmitted data associated with TCP segmentation? For this question you may want to think about at what layer each protocol operates, and how the protocols at the different layers interoperate
  * Det finns information om IP-adress och vilken port den ska till.
+16. How many HTTP GET request messages were sent by your browser? To which Internet addresses were these GET requests sent?
+ * 2 get requests till en en IP-adress och två till en annan.
+17. Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel? Explain.
+ * Seriellt då nedladningarna är i två olika get-requests och börjar vid olika tidpunkter.
+
+18. What is the server’s response (status code and phrase) in response to the initial HTTP GET message from your browser?
+ * 401 "Unauthorized"
+19. When your browser sends the HTTP GET message for the second time, what new field is included in the HTTP GET message?
+ * Authorization
+
+20. Skillnaden i connection close och connection keep-alive verkar vara att connection close görs efter något hämtas från en en annan server än den man besöker så som en bild eller fil som finns på den sidan man besöker. Connection keep-alvie är på den sidan man besöker.
 
 # Summary part one
 Första kollade vi lite grundläggande och kollade på IP-adresser. Lärde sig lite om HTTP , vad varje del av GET var och vad för information som fanns i varje subdel.
@@ -39,20 +50,11 @@ Första kollade vi lite grundläggande och kollade på IP-adresser. Lärde sig l
 Andra delen kollade vi på två HTTP-requests efter varandra och jämförde dem , vad som skillde sig och varför. Till exempel så hämta den inte hem en fil om den redan fanns i cashen.
 # Summary part three
 Tredje delen så kollade vi på TCP-kommunikationen och se att meddelandet och hämtningen delades upp i flera små segment.
-
-16. How many HTTP GET request messages were sent by your browser? To which Internet addresses were these GET requests sent?
- * 2 get requests till en en IP-adress och två till en annan.
-17. Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel? Explain.
- * Seriellt då nedladningarna är i två olika get-requests och börjar vid olika tidpunkter.
 # Summary part four
 I fjärde delen så kollar vi på hur det görs när bilder på en sida måste hämtas från andra sidor.
-18. What is the server’s response (status code and phrase) in response to the initial HTTP GET message from your browser?
- * 401 "Unauthorized"
-19. When your browser sends the HTTP GET message for the second time, what new field is included in the HTTP GET message?
- * Authorization
 # Summary part five
 Femte delen så kollar vad som händer när en hemsida är lösenordsskyddad vad som skickas i get-request mm.
-20. Skillnaden i connection close och connection keep-alive verkar vara att connection close görs efter något hämtas från en en annan server än den man besöker så som en bild eller fil som finns på den sidan man besöker. Connection keep-alvie är på den sidan man besöker.
+
 
 
 
