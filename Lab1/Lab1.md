@@ -56,7 +56,7 @@ I fjärde delen så kollar vi på hur det görs när bilder på en sida måste h
 # Summary part E
 Femte delen så kollar vad som händer när en hemsida är lösenordsskyddad vad som skickas i get-request mm.
 
-
+ö
 
 
 
