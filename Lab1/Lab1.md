@@ -44,15 +44,15 @@
 
 20. Skillnaden i connection close och connection keep-alive verkar vara att connection close görs efter något hämtas från en en annan server än den man besöker så som en bild eller fil som finns på den sidan man besöker. Connection keep-alvie är på den sidan man besöker.
 
-# Summary part one
+# Summary part A
 Första kollade vi lite grundläggande och kollade på IP-adresser. Lärde sig lite om HTTP , vad varje del av GET var och vad för information som fanns i varje subdel.
-# Summary part two
+# Summary part B
 Andra delen kollade vi på två HTTP-requests efter varandra och jämförde dem , vad som skillde sig och varför. Till exempel så hämta den inte hem en fil om den redan fanns i cashen.
-# Summary part three
+# Summary part C
 Tredje delen så kollade vi på TCP-kommunikationen och se att meddelandet och hämtningen delades upp i flera små segment.
-# Summary part four
+# Summary part D
 I fjärde delen så kollar vi på hur det görs när bilder på en sida måste hämtas från andra sidor.
-# Summary part five
+# Summary part E
 Femte delen så kollar vad som händer när en hemsida är lösenordsskyddad vad som skickas i get-request mm.
 
 
