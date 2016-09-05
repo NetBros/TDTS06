@@ -1,4 +1,6 @@
-# Lab 1
+# TDST06, Lab 1
+## alepo020, miljo274
+## Labborations assistent Hans-Filip Elo
 
 1. Is your browser running HTTP version 1.0 or 1.1? What version of HTTP is the server running?
  * 1.1 
@@ -42,8 +44,8 @@
 19. When your browser sends the HTTP GET message for the second time, what new field is included in the HTTP GET message?
  * Authorization
 
-20.What does the "Connection: close" and "Connection: Keep-alive" header field imply in HTTP protocol? When should one be used over the other?
- * Skillnaden i connection close och connection keep-alive verkar vara att connection close görs efter något hämtas från en en annan server än den man besöker så som en bild eller fil som finns på den sidan man besöker. Connection keep-alvie är på den sidan man     besöker.
+20. What does the "Connection: close" and "Connection: Keep-alive" header field imply in HTTP protocol? When should one be used over the other?
+ * Skillnaden i connection close och connection keep-alive verkar vara att connection close görs efter något hämtas från en en annan    server än den man besöker så som en bild eller fil som finns på den sidan man besöker. Connection keep-alvie är på den sidan man     besöker.
 
 # Summary part A
 Första kollade vi lite grundläggande och kollade på IP-adresser. Lärde sig lite om HTTP , vad varje del av GET var och vad för information som fanns i varje subdel.
@@ -55,9 +57,6 @@ Tredje delen så kollade vi på TCP-kommunikationen och se att meddelandet och h
 I fjärde delen så kollar vi på hur det görs när bilder på en sida måste hämtas från andra sidor.
 # Summary part E
 Femte delen så kollar vad som händer när en hemsida är lösenordsskyddad vad som skickas i get-request mm.
-
-ö
-
 
 
 
