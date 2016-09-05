@@ -33,7 +33,7 @@
 14. What is the status code and phrase associated with the response to the HTTP GET request?
  * 200 "OK"
 15. Is there any HTTP header information in the transmitted data associated with TCP segmentation? For this question you may want to think about at what layer each protocol operates, and how the protocols at the different layers interoperate
- * Nej, detta är en av sakerna som krävs för att det ska ses som layered. Protokolet under har inte koll på hur
+ * Nej, detta är en av sakerna som krävs för att det ska ses som layered. Protokolen kan se neråt men inte uppåt, så ingen information om HTTP finns i TCP.   
 16. How many HTTP GET request messages were sent by your browser? To which Internet addresses were these GET requests sent?
  * 2 get requests till en en IP-adress och två till en annan.
 17. Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel? Explain.
