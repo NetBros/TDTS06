@@ -9,7 +9,7 @@
   * Me (Source:) 10.255.137.7
   * Server (Destination:) 128.119.245.12
 4. What is the status code returned from the server to your browser?
-  * We don't have one
+  * 304 "not modified"
 5. When was the HTML file that you are retrieving last modified at the server?
   * If-Modified-Since: Wed, 31 Aug 2016 05:59:01 GMT\r\n
 6. How many bytes of content are being returned to your browser?
@@ -19,9 +19,16 @@
 8. Inspect the contents of the first HTTP GET request from your browser to the server. Do you see an “IF-MODIFIED-SINCE” line in the HTTP GET?
  * Nej
 9. Inspect the contents of the server response. Did the server explicitly return the contents of the file? How can you tell?
- * 
+ * Första 200 för ok och andra 304 för "not modified"
 10. Now inspect the contents of the second HTTP GET request from your browser to the server. Do you see an “IF-MODIFIED-SINCE:” line in the HTTP GET? If so, what information follows the “IF-MODIFIED-SINCE:” header?
+ * If-Modified-Since: Wed, 31 Aug 2016 05:59:01 GMT\r\n
 11. What is the HTTP status code and phrase returned from the server in response to this second HTTP GET? Did the server explicitly return the contents of the file? Explain.
+ * 304 "not modified"
+12. How many HTTP GET request messages were sent by your browser?
+ *
+13. How many data-containing TCP segments were needed to carry the single HTTP response?
+14. What is the status code and phrase associated with the response to the HTTP GET request?
+15. Is there any HTTP header information in the transmitted data associated with TCP segmentation? For this question you may want to think about at what layer each protocol operates, and how the protocols at the different layers interoperate
 
 
 
