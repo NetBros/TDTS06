@@ -57,6 +57,8 @@ Tredje delen så kollade vi på TCP-kommunikationen och se att meddelandet och h
 I fjärde delen så kollar vi på hur det görs när bilder på en sida måste hämtas från andra sidor.
 # Summary part E
 Femte delen så kollar vad som händer när en hemsida är lösenordsskyddad vad som skickas i get-request mm.
+# Summary part E+
+Connection close kommer användas då en sida som enligt uppgift inte får hämtas, istället för att ladda in sidan så används connection close. Sidor som är godkände ska då tsället ha connection keep-alive. 
 
 
 
