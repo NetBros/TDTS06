@@ -8,7 +8,7 @@
  * text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
  * en,en-GB;q=0.8
 3. What is the IP address of your computer? Of the gaia.cs.umass.edu server?
-  * Me (Source:) 10.255.137.7
+  * Me (Source:) 130.236.77.55
   * Server (Destination:) 128.119.245.12
 4. What is the status code returned from the server to your browser?
   * 304 "not modified"
