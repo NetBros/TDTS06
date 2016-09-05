@@ -15,7 +15,7 @@
 5. When was the HTML file that you are retrieving last modified at the server?
   * If-Modified-Since: Wed, 31 Aug 2016 05:59:01 GMT\r\n
 6. How many bytes of content are being returned to your browser?
-  * 502 and 509 depending on computer
+  * Frame 3: 502 bytes on wire (4016 bits), 502 bytes captured (4016 bits) on interface 0
 7. By inspecting the raw data in the "packet bytes" pane, do you see any http headers within the data that are not displayed in the "packet details" pane? If so, name one.
  * Nej
 8. Inspect the contents of the first HTTP GET request from your browser to the server. Do you see an “IF-MODIFIED-SINCE” line in the HTTP GET?
