@@ -25,10 +25,23 @@
 11. What is the HTTP status code and phrase returned from the server in response to this second HTTP GET? Did the server explicitly return the contents of the file? Explain.
  * 304 "not modified"
 12. How many HTTP GET request messages were sent by your browser?
- *
+ * 1
 13. How many data-containing TCP segments were needed to carry the single HTTP response?
+ * 4
 14. What is the status code and phrase associated with the response to the HTTP GET request?
+ * 200 "OK"
 15. Is there any HTTP header information in the transmitted data associated with TCP segmentation? For this question you may want to think about at what layer each protocol operates, and how the protocols at the different layers interoperate
+ * Det finns information om IP-adress och vilken port den ska till.
+
+# Summary part one
+Första kollade vi lite grundläggande och kollade på IP-adresser. Lärde sig lite om HTTP , vad varje del av GET var och vad för information som fanns i varje subdel.
+
+Andra delen kollade vi på två HTTP-requests efter varandra och jämförde dem , vad som skillde sig och varför. Till exempel så hämta den inte hem en fil om den redan fanns i cashen.
+
+Tredje delen så kollade vi på TCP-kommunikationen och se att meddelandet och hämtningen delades upp i flera små segment.
+
+16. How many HTTP GET request messages were sent by your browser? To which Internet addresses were these GET requests sent?
+17. Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel? Explain.
 
 
 
