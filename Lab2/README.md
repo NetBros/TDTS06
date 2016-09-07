@@ -15,7 +15,12 @@ This is a simple web proxy server writen in python which should have the followi
 
 ## Preparation questions
 * How will you transfer text data over a socket? How will you transfer binary data like image files over socket? You can assume the context of language that you plan to use for performing the assignment (i.e., c, c++, or java).
+ * socket.send(data)?
 * What does the "Connection: close" and "Connection: Keep-alive" header field imply in HTTP protocol. When should one be used over the other? [See question 20 in assignment 1.] For this question you may also want to go back to the traces used in assignment 1 and see if you can find either (or both) of these types of connections.
+ * close så får vi all data, keep-alive måste vi ligga och vänta tills connection timar ut
 * Consider the use of a proxy server, through which the client sends its request. Briefly explain (using a block diagram) the HTTP request-response interaction between a client, proxy, and server. Pay careful attention to the TCP port numbers as you will use a similar setup in this assignment. [See optional question 20 in assignment 21.]
+ * [firefox]---->[server socket    [Proxy server]      client socket]---->[web server]
 * Please outline a high-level algorithm that describes how you plan to implement your version of NetNinny.
- 
+  * Port = my_port
+  * server_socket.listen(my_port)
+  * 
