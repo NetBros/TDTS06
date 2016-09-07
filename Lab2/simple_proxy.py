@@ -37,7 +37,7 @@ def main():
 	# Getting url from get request
 	data_temp = conn.recv(BUFFER_SIZE)
 	data += str(data_temp,"utf-8")
-	conn.close()
+	#conn.close()
 
 	index_host = "Host: "
 	index_pos = data.find(index_host)+ len(index_host)
@@ -51,6 +51,19 @@ def main():
 		n+=1
 
 	print(url_request)
+	client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+
+	client_socket.connect((url_request,80))
+	client_socket.send("GET / HTTP/1.0%s" % (CRLF))
+
+	while 1:
+		data_temp = client_socket.recv(BUFFER_SIZE)
+		conn.send(data_temp)
+		if not data_temp:break
+
+	conn.close()
+	client_socket.close()
+
 
 
 
