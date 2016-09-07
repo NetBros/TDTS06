@@ -32,7 +32,7 @@ def main():
 	print('Connected by, ', addr)
 	server_socket.close()
 
-	while true:
+	while 1:
 		data = client_socket.recv(1024)
 		if not data: break
 		client_socket.send(data)
