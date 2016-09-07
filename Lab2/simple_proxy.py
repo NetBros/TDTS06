@@ -4,8 +4,9 @@ import socket
 import select
 import time
 import sys
+import io
 
-BUFFER_SIZE = 4096
+BUFFER_SIZE = 1024
 LOCAL_HOST = ''
 
 if len(sys.argv) > 1:
@@ -28,14 +29,30 @@ def main():
 	if server_socket is None:
 		print('Error could not open socket')
 
-	client_socket, addr = server_socket.accept()
+	conn, addr = server_socket.accept()
 	print('Connected by, ', addr)
 	server_socket.close()
+	data = ''
 
-	while 1:
-		data = client_socket.recv(1024)
-		if not data: break
-		client_socket.send(data)
-	client_socket.close()
+	# Getting url from get request
+	data_temp = conn.recv(BUFFER_SIZE)
+	data += str(data_temp,"utf-8")
+	conn.close()
+
+	index_host = "Host: "
+	index_pos = data.find(index_host)+ len(index_host)
+	n = index_pos
+	url_request = ""
+	while n < len(data):
+		if data[n] == '\n':
+			break
+		else:
+			url_request += data[n]
+		n+=1
+
+	print(url_request)
+
+
+
 ####### Kör main loop #########
 main()
