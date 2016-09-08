@@ -6,10 +6,13 @@ def find_url(data):
 	index_pos = data.find(index_host)+ len(index_host)
 	n = index_pos
 	url_request = ""
+	find_www = ""
 	while n < len(data):
 		if data[n] == '\n':
 			break
-		else:
+		elif find_www == 'www.':
 			url_request += data[n]
+		else:
+			find_www += data[n]
 		n+=1
 	return url_request
