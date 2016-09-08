@@ -43,7 +43,7 @@ def main():
 	print(url_request)
 	try:
 		client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-		client_socket.connect(('expressen.se',80))
+		client_socket.connect(('dn.se',80))
 		client_socket.send(data_byte)
 		while 1:
 			print("In while-loop")
