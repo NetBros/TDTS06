@@ -15,4 +15,5 @@ def find_url(data):
 		else:
 			find_www += data[n]
 		n+=1
-	return url_request
+	clean_url_request = url_request.replace(" ","")
+	return clean_url_request
