@@ -16,7 +16,7 @@ else:
 ######## Definierar main loop ###########
 def main():
 	# The server socket listens to the browser
-	print('\n[*] Listening on port:', str(PORT))
+	print('[*] Listening on port:', str(PORT))
 	server_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 	server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	try:
@@ -60,13 +60,6 @@ def main():
 		client_socket.close()
 		print("\n[*] Error could not open client socket")
 		sys.exit(2)
-
-		data_reply_str=''
-
-
-#
-#	conn.close()
-#	client_socket.close()
 
 
 
