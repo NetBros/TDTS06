@@ -4,7 +4,7 @@ import socket, sys
 from my_functions import *
 #from thread import *
 
-BUFFER_SIZE = 1024
+BUFFER_SIZE = 4096
 LOCAL_HOST = ''
 MAX_CONN = 5
 
@@ -37,32 +37,24 @@ def main():
 	data_byte = conn.recv(BUFFER_SIZE)
 	data_str += str(data_byte,"utf-8")
 
-
+	# Finding host address from get request
 	url_request = find_url(data_str)
 
-	print(url_request)
 	try:
 		client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-		client_socket.connect(('dn.se',80))
+		client_socket.connect((url_request,80))
 		client_socket.send(data_byte)
 		while 1:
-			print("In while-loop")
 			data_reply = client_socket.recv(BUFFER_SIZE)
 			if (len(data_reply)>0):
-				data_reply_str =str(data_reply,"utf-8" )
-				print(data_reply_str)
 				conn.send(data_reply)
 			else: break
-		print("after while-loop")
 		client_socket.close()
 		conn.close()
 	except socket.error as msg:
 		client_socket.close()
 		print("\n[*] Error could not open client socket")
 		sys.exit(2)
-
-
-
 
 ####### Kör main loop #########
 try:
