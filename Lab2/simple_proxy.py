@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 
-import socket, sys
-from my_functions import *
-#from thread import *
+from request_handler import *
 
 BUFFER_SIZE = 4096
 LOCAL_HOST = ''
-MAX_CONN = 5
+MAX_CONN = 1
 
 if len(sys.argv) > 1:
 	PORT = sys.argv[1]
@@ -21,40 +19,21 @@ def main():
 	server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	try:
 		server_socket.bind((LOCAL_HOST,PORT))
-		server_socket.listen(1)
+		server_socket.listen(MAX_CONN)
 	except socket.error as msg:
 		server_socket.close()
 		print("\n[*] Error could not open server socket")
 		sys.exit(2)
 
-
-	conn, addr = server_socket.accept()
-	print('Connected by, ', addr)
+	while 1:
+		conn, addr = server_socket.accept()
+		print('[*] Connected by, ', addr)
+		# Create a new thread to handle request
+		new_thread = request_handler(conn,addr,BUFFER_SIZE)
+		new_thread.start()
+		print("[*] while threading")
 	server_socket.close()
-	data_str = ''
 
-	# Getting url from get request
-	data_byte = conn.recv(BUFFER_SIZE)
-	data_str += str(data_byte,"utf-8")
-
-	# Finding host address from get request
-	url_request = find_url(data_str)
-
-	try:
-		client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-		client_socket.connect((url_request,80))
-		client_socket.send(data_byte)
-		while 1:
-			data_reply = client_socket.recv(BUFFER_SIZE)
-			if (len(data_reply)>0):
-				conn.send(data_reply)
-			else: break
-		client_socket.close()
-		conn.close()
-	except socket.error as msg:
-		client_socket.close()
-		print("\n[*] Error could not open client socket")
-		sys.exit(2)
 
 ####### Kör main loop #########
 try:
