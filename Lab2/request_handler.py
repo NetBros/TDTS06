@@ -12,18 +12,22 @@ class request_handler(threading.Thread):
 
     def run(self):
         client_req = ''
-        
-        client_request = self.conn.recv(self.BUFFER_SIZE)
-        client_req += str(client_request,"utf-8")
+
+        get_request = self.conn.recv(self.BUFFER_SIZE)
+        client_req += str(get_request)
 
         # Finding host address from get request
-        url_request = find_url(client_req)
+        host = find_url(client_req)
+        #print(get_request)
+        #get_request = get_request_close(get_request)
+        #print(get_request)
+        print(host)
 
         try:
             client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
             print("[*] Setting upp connection to ", url_request)
-            client_socket.connect((url_request,80))
-            client_socket.send(client_request)
+            client_socket.connect((host,80))
+            client_socket.send(get_request)
             while 1:
                 server_request = client_socket.recv(self.BUFFER_SIZE)
                 if (len(server_request)>0):

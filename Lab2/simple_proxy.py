@@ -31,7 +31,6 @@ def main():
 		# Create a new thread to handle request
 		new_thread = request_handler(conn,addr,BUFFER_SIZE)
 		new_thread.start()
-		print("[*] while threading")
 	server_socket.close()
 
 
