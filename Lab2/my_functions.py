@@ -25,12 +25,12 @@ def get_request_close(get_request):
 
 	index_first_half = get_request.find(connection)+len(connection)
 	print (index_first_half)
-	#index_second_half = index_first_half+len(keep_alive)
+	index_second_half = index_first_half+len(keep_alive)
 
-	#first_half = get_request[index_first_half]
-	#second_half = get_request[index_second_half:]
+	first_half = get_request[:index_first_half]
+	second_half = get_request[index_second_half:]
 
-	#return first_half+close+second_half
+	return first_half+close+second_half
 
 def convert_to_ascii(text):
     return " ".join(str(ord(char)) for char in text)

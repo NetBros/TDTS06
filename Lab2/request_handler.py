@@ -11,24 +11,30 @@ class request_handler(threading.Thread):
         self.BUFFER_SIZE = BUFFER_SIZE
 
     def run(self):
-        client_req = ''
+        get_request = ''
         server_req = ''
-        get_request = self.conn.recv(self.BUFFER_SIZE)
-        client_req += str(get_request)
+        byte_get_request = self.conn.recv(self.BUFFER_SIZE)
+        print("First byte_get_request",byte_get_request)
+        get_request += str(byte_get_request)
+
         #test = string(client_req)
 
         # Finding host address from get request
-        host = find_url(client_req)
-        #get_request = get_request_close(get_request)
-        #print(get_request)
+        host = find_url(get_request)
+        print("get_request Keep alive   =>",get_request)
+        get_request = get_request_close(get_request)
+        print("Get request close    =>",get_request)
+        byte_get_request = get_request.encode('utf-8')
+
+        print("byte_get_request close",byte_get_request)
         #print(host)
 
         try:
             client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
             print("[*] Setting upp connection to ", host)
-            client_socket.connect(("ida.liu.se",80))
+            client_socket.connect((host,80))
             print("[*] Connected, sending get request")
-            client_socket.send(get_request)
+            client_socket.send(byte_get_request)
             print("[*] Get request sent")
             while 1:
                 print("[*] Prepering to peek at data")
