@@ -5,30 +5,22 @@ from my_functions import *
 from array import array
 
 class request_handler(threading.Thread):
-    def __init__(self,conn,addr,BUFFER_SIZE):
+    def __init__(self,conn,addr,BUFFER_SIZE,timeout):
         threading.Thread.__init__(self)
         self.conn = conn
         self.addr = addr
         self.BUFFER_SIZE = BUFFER_SIZE
+        self.timeout = timeout
 
     def run(self):
-        get_request = ''
-        server_req = ''
-        timeout = 1
+        server_req = ""
         byte_get_request = self.conn.recv(self.BUFFER_SIZE)
-        print("First byte_get_request",byte_get_request)
-        #get_request += str(byte_get_request)
-        get_request += str(byte_get_request)
-        #test = string(client_req)
+        big_dict = Get_dict(find_header(byte_get_request))
 
-        # Finding host address from get request
-        host = find_url(get_request)
-        print("get_request Keep alive   =>",get_request)
-        get_request = get_request_close(get_request)
-        print("Get request close    =>",get_request)
-        byte_get_request = get_request.encode()
-        print("byte_get_request close",byte_get_request)
-        #print(host)
+        host = big_dict["Host"]
+        big_dict["Connection"] = "close"
+
+        get_request = dict_2_get(big_dict)
 
         try:
             print("[*] I'm begining my work in a new thread" )
@@ -37,7 +29,7 @@ class request_handler(threading.Thread):
             client_socket.connect((host,80))
 
             print("[*] Connected, sending get request")
-            client_socket.send(byte_get_request)
+            client_socket.send(get_request)
             print("[*] Get request sent")
 
             TIME_FLAGG = 0
@@ -50,7 +42,7 @@ class request_handler(threading.Thread):
                 elif(peek_bytes == 0 and not TIME_FLAGG):
                     TIME_FLAGG = 1
                     start_time = time.time()
-                elif(peek_bytes == 0 and ((start_time + timeout) < time.time()) and TIME_FLAGG):
+                elif(peek_bytes == 0 and ((start_time + self.timeout) < time.time()) and TIME_FLAGG):
                     break
                 elif(peek_bytes > 0 and TIME_FLAGG):
                     TIME_FLAGG = 0

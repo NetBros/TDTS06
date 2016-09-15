@@ -1,6 +1,19 @@
 #!/usr/bin/env python3
 import string
 import collections
+
+def find_header(get_request):
+	get_request = get_request.split(b"\r\n\r\n")
+	header = str(get_request[0],"utf-8")
+	body =	get_request[1]
+	if len(body) > 0:
+		return(header,body)
+	elif len(header) == 0:
+		return(body)
+	else:
+		return(header)
+
+
 def Get_dict(get_request):
 	my_dict = collections.OrderedDict()
 	end_of_line = get_request.find("\r\n")
@@ -13,36 +26,20 @@ def Get_dict(get_request):
 		my_dict[Get_request_line[0]] = Get_request_line[1]
 	return my_dict
 
-def find_url(data):
-	host = "Host: "
-	index_host_end = data.find(host)+ len(host)
-	data = data[index_host_end:]
-	end_of_line = data.find("\\r\\n")
-	data = data[:end_of_line]
 
-	n = data.find("www.")
+def dict_2_get(big_dict):
+	LAZY_FLAGG = 1
+	get_request = bytearray()
+	for key in big_dict:
+		value = big_dict[key]
+		if LAZY_FLAGG:
+			LAZY_FLAGG = 0
+			line = key + " " + value
+		else:
+			line = key + ": " + value
+		get_request += line.encode("utf-8") + b"\r\n"
+	return(get_request+b"\r\n")
 
-	if  n == -1:
-		url_request = data
-	else:
-		k = (n+len("www."))
-		url_request = data[k:]
-
-	return url_request
-
-def get_request_close(get_request):
-	connection = "Connection: "
-	keep_alive = "Keep-Alive"
-	close = "close"
-
-	index_first_half = get_request.find(connection)+len(connection)
-	print (index_first_half)
-	index_second_half = index_first_half+len(keep_alive)
-
-	first_half = get_request[:index_first_half]
-	second_half = get_request[index_second_half:]
-
-	return first_half+close+second_half
 
 def convert_to_ascii(text):
     return " ".join(str(ord(char)) for char in text)
