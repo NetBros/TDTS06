@@ -21,7 +21,7 @@ def Get_dict(get_request):
 	Get_request_line = Get_request_line.split(" ")
 	my_dict[Get_request_line[0]] = Get_request_line[1]+" "+Get_request_line[2]
 
-	for line in get_request[end_of_line+2:-4].splitlines():
+	for line in get_request[end_of_line+2:].splitlines():
 		Get_request_line = line.split(": ")
 		my_dict[Get_request_line[0]] = Get_request_line[1]
 	return my_dict
