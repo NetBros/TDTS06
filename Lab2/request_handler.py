@@ -2,6 +2,7 @@
 
 import threading, socket, sys, time
 from my_functions import *
+from array import array
 
 class request_handler(threading.Thread):
     def __init__(self,conn,addr,BUFFER_SIZE):
@@ -16,8 +17,8 @@ class request_handler(threading.Thread):
         timeout = 1
         byte_get_request = self.conn.recv(self.BUFFER_SIZE)
         print("First byte_get_request",byte_get_request)
+        #get_request += str(byte_get_request)
         get_request += str(byte_get_request)
-
         #test = string(client_req)
 
         # Finding host address from get request
@@ -25,8 +26,7 @@ class request_handler(threading.Thread):
         print("get_request Keep alive   =>",get_request)
         get_request = get_request_close(get_request)
         print("Get request close    =>",get_request)
-        byte_get_request = get_request.encode('utf-8')
-
+        byte_get_request = get_request.encode()
         print("byte_get_request close",byte_get_request)
         #print(host)
 
