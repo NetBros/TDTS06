@@ -1,5 +1,17 @@
 #!/usr/bin/env python3
 import string
+import collections
+def Get_dict(get_request):
+	my_dict = collections.OrderedDict()
+	end_of_line = get_request.find("\r\n")
+	Get_request_line = get_request[:end_of_line]
+	Get_request_line = Get_request_line.split(" ")
+	my_dict[Get_request_line[0]] = Get_request_line[1]+" "+Get_request_line[2]
+
+	for line in get_request[end_of_line+2:-4].splitlines():
+		Get_request_line = line.split(": ")
+		my_dict[Get_request_line[0]] = Get_request_line[1]
+	return my_dict
 
 def find_url(data):
 	host = "Host: "
