@@ -4,14 +4,8 @@ import collections
 
 def find_header(get_request):
 	get_request = get_request.split(b"\r\n\r\n")
-	header = str(get_request[0],"utf-8")
-	body =	get_request[1]
-	if len(body) > 0:
-		return(header,body)
-	elif len(header) == 0:
-		return(body)
-	else:
-		return(header)
+	return(str(get_request[0],"utf-8"),get_request[1])
+
 
 
 def Get_dict(get_request):
@@ -27,7 +21,7 @@ def Get_dict(get_request):
 	return my_dict
 
 
-def dict_2_get(big_dict):
+def dict_2_byte(big_dict):
 	LAZY_FLAGG = 1
 	get_request = bytearray()
 	for key in big_dict:
