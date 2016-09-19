@@ -37,3 +37,16 @@ def dict_2_byte(big_dict):
 
 def convert_to_ascii(text):
     return " ".join(str(ord(char)) for char in text)
+
+
+class My_Error(Exception):
+     def __init__(self, value,word):
+         self.value = value
+         self.word = word
+
+def check_ban(data,usage,ban_list):
+    data = data.lower()
+    data = data.strip()
+    for word in ban_list:
+        if(not -1 == data.find(word)):
+            raise My_Error(usage,word)

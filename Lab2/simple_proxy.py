@@ -11,6 +11,15 @@ if len(sys.argv) > 1:
 else:
 	PORT = 8000
 
+temp_list = open("BAN-LIST.txt",'r')
+temp_list = temp_list.read()
+
+ban_list = []
+for line in temp_list.splitlines():
+	line = line.lower()
+	line = line.strip()
+	ban_list.append(line)
+
 ######## Definierar main loop ###########
 def main():
 	# The server socket listens to the browser
@@ -29,7 +38,7 @@ def main():
 		conn, addr = server_socket.accept()
 		print('[*] Connected by, ', addr)
 		# Create a new thread to handle request
-		new_thread = request_handler(conn,addr,BUFFER_SIZE)
+		new_thread = request_handler(conn,addr,BUFFER_SIZE,ban_list)
 		new_thread.start()
 	server_socket.close()
 
