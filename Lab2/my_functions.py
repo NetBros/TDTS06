@@ -8,24 +8,30 @@ def server_conn(get_dict):
 	get_dict["Connection"] = "close"
 
 	get_request = dict_2_byte(get_dict)
+	try:
+    	client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    	print("[*] Setting upp connection to ", host)
+    	client_socket.connect((host,80))
+    	client_socket.send(get_request)
 
-    client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    print("[*] Setting upp connection to ", host)
-    client_socket.connect((host,80))
-    client_socket.send(get_request)
-
-    HEADER_FLAGG = 1
-    while 1:
-        server_request = client_socket.recv(self.BUFFER_SIZE)
-        if(len(server_request)<1):break
-        if HEADER_FLAGG:
-            server_request_t = find_header(server_request)
-            header_dict = Get_dict(server_request_t[0])
-            body = server_request_t[1]
-            HEADER_FLAGG = 0
-            server_request = b""
-		body += server_request
-	header = dict_2_byte(header_dict)
+    	HEADER_FLAGG = 1
+    	while 1:
+        	server_request = client_socket.recv(self.BUFFER_SIZE)
+        	if(len(server_request)<1):break
+        	if HEADER_FLAGG:
+            	server_request_t = find_header(server_request)
+            	header_dict = Get_dict(server_request_t[0])
+            	body = server_request_t[1]
+            	HEADER_FLAGG = 0
+            	server_request = b""
+			body += server_request
+		client_socket.close()
+		header = dict_2_byte(header_dict)
+	except socket.error as msg:
+		client_socket.close()
+		self.conn.close()
+		print("\n[*] Error with client_socket")
+		sys.exit(2)
 	return(header,body)
 
 
