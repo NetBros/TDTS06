@@ -50,9 +50,11 @@ class request_handler(threading.Thread):
                     server_request = b""
 
                 body += server_request
+                for key in get_dict:
+                    if key == "Content-Type":
+                        if not -1 == header_dict["Content-Type"].find("text/html"):
+                            print("Content-Type find------------")
 
-            if not -1 == header_dict["Content-Type"].find("text/html"):
-                print("Bad words found")
                 #try:
                     #check_ban(,1,self.ban_list)
                 #except My_Error as e:
