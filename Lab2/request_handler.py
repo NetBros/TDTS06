@@ -28,38 +28,22 @@ class request_handler(threading.Thread):
             temp_get = get_dict["GET"].split(" ")
             get_dict["GET"] = "http://www.ida.liu.se/~TDTS04/labs/2011/ass2/error1.html" + " " + temp_get[1]
 
-        host = get_dict["Host"]
-        get_dict["Connection"] = "close"
-
-        get_request = dict_2_byte(get_dict)
         try:
-            client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-            print("[*] Setting upp connection to ", host)
-            client_socket.connect((host,80))
-            client_socket.send(get_request)
+            [header, body] = server_conn(get_dict)
 
-            HEADER_FLAGG = 1
-            while 1:
-                server_request = client_socket.recv(self.BUFFER_SIZE)
-                if(len(server_request)<1):break
-                if HEADER_FLAGG:
-                    server_request_t = find_header(server_request)
-                    header_dict = Get_dict(server_request_t[0])
-                    body = server_request_t[1]
-                    HEADER_FLAGG = 0
-                    server_request = b""
+            #if not -1 == header_dict["Content-Type"].find("text/html"):
+            #    print("Bad words found")
+            #try:
+            #    check_ban(get_dict["GET"],1,self.ban_list)
+            #except My_Error as e:
+            #    print("[*!*] ERROR found ",e.word," in url, redirecting")
+            #    get_dict["Host"] = "www.ida.liu.se"
+            #    temp_get = get_dict["GET"].split(" ")
+            #    get_dict["GET"] = "http://www.ida.liu.se/~TDTS04/labs/2011/ass2/error2.html" + " " + temp_get[1]
+                [header, body] = server_conn(get_dict)
 
-                body += server_request
-
-            if not -1 == header_dict["Content-Type"].find("text/html"):
-                print("Bad words found")
-                #try:
-                    #check_ban(,1,self.ban_list)
-                #except My_Error as e:
-                #    raise
-
-            header = dict_2_byte(header_dict)
             server_request = header + body
+
             self.conn.send(server_request)
 
             client_socket.close()
