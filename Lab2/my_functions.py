@@ -3,7 +3,7 @@ import string
 import collections
 import threading, socket, sys, time
 
-def server_conn(get_dict,BUFFER_SIZE):
+def server_conn(get_dict,conn,BUFFER_SIZE):
 
 	host = get_dict["Host"]
 	get_dict["Connection"] = "close"
@@ -27,13 +27,12 @@ def server_conn(get_dict,BUFFER_SIZE):
 				server_request = b""
 			body += server_request
 		client_socket.close()
-		header = dict_2_byte(header_dict)
 	except socket.error as msg:
+		conn.close()
 		client_socket.close()
-		self.conn.close()
 		print("\n[*] Error with client_socket")
 		sys.exit(2)
-	return(header,body)
+	return(header_dict,body)
 
 
 def find_header(get_request):
