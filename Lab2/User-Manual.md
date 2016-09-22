@@ -80,4 +80,10 @@ TYPE_FLAGG = 1
 if TYPE_FLAGG:  
 if not -1 == header_dict["Content-Type"].find("text/html"):  
 ## Summary of functianality
-* As long it is a url or a body that is not cryptated we can run it and block it if it contains any of the the word on the banlist
+* The fast basic explanation of what our proxy can and can not do is that it can handle "http" and not "https"
+* Http-url:s with ban words will be banned and sent to net-niyy page 1.
+* Http-bodys with ban words will be banned and sent to net-niyy page 2.
+* Other http-homepages will run as a normal webpage.
+* Most https-homepages will run as normal, but we have som problem with pages like dailymotion.com where there is https-videofile on the first page.
+* To come around the gzip problem we deleted the line in the get request where it stated which encoding it accepted.
+
