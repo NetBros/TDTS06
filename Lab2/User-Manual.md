@@ -33,7 +33,8 @@ Features
 
 Custom port "./simple_proxy.py 8433" changes the port the server listens to from 8000 to 8433
 we do not support posting.
-Testing
+
+## Testing
 
 The server can not handle https requests in the regard that https requests are not sent through the server.
 Example webpages that works
