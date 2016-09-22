@@ -60,24 +60,24 @@ raise My_Error(usage,word)
 
 
 try:
-check_ban(get_dict["GET"],1,self.ban_list)
-except My_Error as e:
-print("[!] ERROR found ",e.word," in url, redirecting")
-get_dict["Host"] = "www.ida.liu.se"
-temp_get = get_dict["GET"].split(" ")
-get_dict["GET"] = "http://www.ida.liu.se/~TDTS04/labs/2011/ass2/error1.html" + " " + temp_get[1]
-Feature 7 custom port
-if len(sys.argv) > 1:
-PORT = sys.argv[1]
-else:
-PORT = 8000
-Feature 8 smart body search
-TYPE_FLAGG = 0
-ENCODING_FLAGG = 0
-for key in header_dict:
-if key == "Content-Type":
-TYPE_FLAGG = 1
-if TYPE_FLAGG:
-if not -1 == header_dict["Content-Type"].find("text/html"):
+check_ban(get_dict["GET"],1,self.ban_list)  
+except My_Error as e:  
+print("[!] ERROR found ",e.word," in url, redirecting")  
+get_dict["Host"] = "www.ida.liu.se"  
+temp_get = get_dict["GET"].split(" ")  
+get_dict["GET"] = "http://www.ida.liu.se/~TDTS04/labs/2011/ass2/error1.html" + " " + temp_get[1]  
+Feature 7 custom port  
+if len(sys.argv) > 1:  
+PORT = sys.argv[1]  
+else:  
+PORT = 8000  
+Feature 8 smart body search  
+TYPE_FLAGG = 0  
+ENCODING_FLAGG = 0  
+for key in header_dict:  
+if key == "Content-Type":  
+TYPE_FLAGG = 1  
+if TYPE_FLAGG:  
+if not -1 == header_dict["Content-Type"].find("text/html"):  
 ## Summary of functianality
 * As long it is a url or a body that is not cryptated we can run it and block it if it contains any of the the word on the banlist
