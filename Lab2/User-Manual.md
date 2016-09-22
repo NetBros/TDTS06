@@ -7,10 +7,10 @@ The Net Ninny web proxy is a python program which can be used to block web pages
 * supports HTTP/1.0 and HTTP/1.1
 * Handles simple HTTP GET interactions between client and server
 * Blocks requests for undesirable URLs, using HTTP redirection to display this error page instead
-* Detects inappropriate content bytes within a Web page before it is returned to the user, and redirecting to this error page Imposes no limit on the size of the transferred HTTP data
+* Detects inappropriate content bytes within a Web page before it is returned to the user, and redirecting to this error page * Imposes no limit on the size of the transferred HTTP data
 * Is compatible with all major browsers (e.g. Internet Explorer, Mozilla Firefox, Google Chrome, etc.) without the requirement to tweak any advanced feature
-Allows the user to select the proxy port, default is 8000
-Is smart in selection of what HTTP content should be searched for the forbidden keywords.
+* Allows the user to select the proxy port, default is 8000
+* Is smart in selection of what HTTP content should be searched for the forbidden keywords.
 Requirements
 
 Python 3
