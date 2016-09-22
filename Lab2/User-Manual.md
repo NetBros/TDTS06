@@ -13,34 +13,34 @@ The Net Ninny web proxy is a python program which can be used to block web pages
 * Is smart in selection of what HTTP content should be searched for the forbidden keywords.
 ## Requirements
 
-*Python 3
-*Git
-*Linux terminal emulator
-*Webbrowser with customable http port
+* Python 3
+* Git
+* Linux terminal emulator
+* Webbrowser with customable http port
 ## Installation
 
-*This is a Linux program. It has only been tested in Elementary and ubuntu bash for windows 10. If using with other operationg systems  program relaiablility can not be guaranteed.
+* This is a Linux program. It has only been tested in Elementary and ubuntu bash for windows 10. If using with other operationg systems   program relaiablility can not be guaranteed.
 
-*Get source files "git clone git@github.com:NetBros/TDTS06.git"
-*Change directory to the folder where the proxy server is located "cd TDTS06/Lab2"
-*Make the server executable "chmod +x simple_proxy.py"
+* Get source files "git clone git@github.com:NetBros/TDTS06.git"
+* Change directory to the folder where the proxy server is located "cd TDTS06/Lab2"
+* Make the server executable "chmod +x simple_proxy.py"
 ## How to run?
 
-*Configure a web browser to listen to a specific port.
-*Run by "./simple_proxy.py"
-*Browse your browser
+* Configure a web browser to listen to a specific port.
+* Run by "./simple_proxy.py"
+* Browse your browser
 ## Features
 
-*Custom port "./simple_proxy.py 8433" changes the port the server listens to from 8000 to 8433
-*We do not support posting.
+* Custom port "./simple_proxy.py 8433" changes the port the server listens to from 8000 to 8433
+* We do not support posting.
 
 ## Testing
 
-*The server can not handle https requests in the regard that https requests are not sent through the server.
-*Example webpages that works
+* The server can not handle https requests in the regard that https requests are not sent through the server.
+* Example webpages that works
 
 http://www.ida.liu.se/~TDTS04/labs/2011/ass2/goodtest1.txt http://www.ida.liu.se/~TDTS04/labs/2011/ass2/goodtest2.html http://www.ida.liu.se/~TDTS04/labs/2011/ass2/SpongeBob.html http://www.ida.liu.se/~TDTS04/labs/2011/ass2/SpongeBob.html http://www.ida.liu.se/~TDTS04/labs/2011/ass2/badtest1.html http://www.stackoverflow.com/ http://www.aftonbladet.se/ http://www.svd.se/ http://www.liu.se/ http://www.qz.com/ http://www.bbc.com/
-*Examples of webpages that don't work
+* Examples of webpages that don't work
 
 http://www.dailymotion.com/
 ## Features maped to code
