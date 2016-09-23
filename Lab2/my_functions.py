@@ -16,6 +16,7 @@ def server_conn(get_dict,conn,BUFFER_SIZE):
 		client_socket.send(get_request)
 		#Recive the request from the homepage-server and divides to a header and a body
 		HEADER_FLAGG = 1
+		TYPE_FLAGG = 0
 		while 1:
 			server_request = client_socket.recv(BUFFER_SIZE)
 			if(len(server_request)<1):break
@@ -25,7 +26,24 @@ def server_conn(get_dict,conn,BUFFER_SIZE):
 				body = server_request_t[1]
 				HEADER_FLAGG = 0
 				server_request = b""
+				for key in header_dict:
+					if key == "Content-Type":
+						TYPE_FLAGG = 1
+				if not TYPE_FLAGG:
+					conn.send(dict_2_byte(header_dict)+body)
+				elif -1 == header_dict["Content-Type"].find("text/html"):
+					conn.send(dict_2_byte(header_dict)+body)
+
 			body += server_request
+			if not TYPE_FLAGG:
+				conn.send(server_request)
+				body = b""
+			elif -1 == header_dict["Content-Type"].find("text/html"):
+				conn.send(server_request)
+				body = b""
+
+
+
 		client_socket.close()
 	except socket.error as msg:
 		conn.close()
