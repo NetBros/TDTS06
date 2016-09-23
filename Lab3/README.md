@@ -1,0 +1,8 @@
+# Lab 3 
+* 1 What are the first and last packets for the POST request?
+* 2 What is the IP address and the TCP port used by the client computer (source) that is transferring the file to gaia.cs.umass.edu?
+* 3 What is the IP address of gaia.cs.umass.edu? On what port number is it sending and receiving TCP segments for this connection?
+* 4 What is the sequence number of the TCP SYN segment that is used to initiate the TCP connection between the client computer and          gaia.cs.umass.edu? What is it in the segment that identifies the segment as a SYN segment?
+* 5 What is the sequence number of the SYNACK segment sent by gaia.cs.umass.edu to the client computer in reply to the SYN? What is the      value of the ACKnowledgement field in the SYNACK segment? How did gaia.cs.umass.edu determine that value? What is it in the segment      that identifies the segment as a SYNACK segment?
+* 6 What is the sequence number of the TCP segment containing the HTTP POST command?
+* 7 Consider the TCP segment containing the HTTP POST as the first segment in the TCP connection. What are the sequence numbers of the      first six segments in the TCP connection (including the segment containing the HTTP POST)? At what time was each segment sent? When was  the ACK for each segment received? Given the difference between when each TCP segment was sent, and when its acknowledgement was         received, what is the RTT value for each of the six segments? What is the EstimatedRTT value (see page 277 in text) after the receipt of  each ACK? Assume that the value of the EstimatedRTT is equal to the measured RTT for the first segment, and then is computed using the   EstimatedRTT equation on page 277 for all subsequent segments.
