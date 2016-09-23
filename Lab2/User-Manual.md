@@ -51,10 +51,8 @@ conn, addr = server_socket.accept()
 byte_get_request = self.conn.recv(self.BUFFER_SIZE)  
 server_request = client_socket.recv(BUFFER_SIZE)  
 self.conn.send(server_request)  
-Feature 3 Block url  
+###Feature 3 Block url  
 def check_ban(data,usage,ban_list):  
-data = data.lower()  
-data = data.strip()  
 for word in ban_list:  
 if(not -1 == data.find(word)):  
 raise My_Error(usage,word)  
@@ -72,7 +70,7 @@ if len(sys.argv) > 1:
 PORT = sys.argv[1]  
 else:  
 PORT = 8000  
-Feature 8 smart body search  
+### Feature 8 smart body search  
 TYPE_FLAGG = 0  
 ENCODING_FLAGG = 0  
 for key in header_dict:  
