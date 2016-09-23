@@ -43,6 +43,7 @@ http://www.ida.liu.se/~TDTS04/labs/2011/ass2/goodtest1.txt http://www.ida.liu.se
 * Examples of webpages that don't work
 
 http://www.dailymotion.com/
+* We have tested the server both on the schools network and on our home networks, and it acts the same. All the testeing have been done on our own computers.
 ## Features maped to code
 
 ### Feature 2 simple get request  
