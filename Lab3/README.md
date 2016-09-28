@@ -23,8 +23,11 @@
    * [0.0274, 0.0274, 0.0284125, 0.0336109375, 0.0437220703125, 0.05573181152343751, 0.07246533508300781]
 9. What is the length of each of the first six TCP segments?
  * [565 1460 1460 1460 1460 1460]
-10. What is the minimum amount of available buffer space advertised at the receiver for the entire trace? Does the lack of receiver buffer space ever throttle the sender?
-
+10. What is the minimum amount of available buffer space advertised at the receiver for the entire trace?
+    * 5840
+ * Does the lack of receiver buffer space ever throttle the sender?
+   * Yes, after packadge 31237 the buffer is stagnant and can't increase more 
 11. Are there any retransmitted segments in the trace file? What did you check for (in the trace) in order to answer this question?
+ * No, we checked so that all bytes where transmitted in order
 12. How much data does the receiver typically acknowledge in an ACK? Can you identify cases where the receiver is ACKing every other received segment (see Table 3.2 on page 285 in the text).
 13. What is the throughput (bytes transferred per unit time) for the TCP connection? Explain how you calculated this value.
