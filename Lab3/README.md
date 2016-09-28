@@ -18,7 +18,7 @@
  * When was the ACK for each segment received?
   * [566; 0.0539], [2026; 0.0772], [3486; 0.1240], [4946; 0.1691], [6406; 0.2172], [7866; 0.2678]
  * Given the difference between when each TCP segment was sent, and when its acknowledgement was received, what is the RTT value for each of the six segments?
-  * [0.0275], [0.0232], [0.0694], [0.0917], [0.1391]
+  * [0.0274], [0.0355], [0.07], [0.1145], [0.1398], [0.1896]
  * What is the EstimatedRTT value (see page 277 in text) after the receipt of each ACK? Assume that the value of the EstimatedRTT is equal to the measured RTT for the first segment, and then is computed using the EstimatedRTT equation on page 277 for all subsequent segments.
 9. What is the length of each of the first six TCP segments?
 10. What is the minimum amount of available buffer space advertised at the receiver for the entire trace? Does the lack of receiver       buffer space ever throttle the sender?
