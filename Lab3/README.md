@@ -14,7 +14,12 @@
 7. Consider the TCP segment containing the HTTP POST as the first segment in the TCP connection. What are the sequence numbers of the first six segments in the TCP connection (including the segment containing the HTTP POST)? At what time was each segment sent?
   * format [sequence nmb; time sent] [1; 0.0264], [566; 0.0540], [2026; 0.0546], [3486; 0.0774], [4946; 0.0781], [6406; 0.1241], [7866; 0.3050]
   * Time 0 == Aug 21, 2004 15:44:20.570381000
-8. When was the ACK for each segment received? Given the difference between when each TCP segment was sent, and when its acknowledgement was received, what is the RTT value for each of the six segments? What is the EstimatedRTT value (see page 277 in text) after the receipt of each ACK? Assume that the value of the EstimatedRTT is equal to the measured RTT for the first segment, and then is computed using the EstimatedRTT equation on page 277 for all subsequent segments.
+8. 
+ * When was the ACK for each segment received?
+  * [566; 0.0539], [2026; 0.0772], [3486; 0.1240], [4946; 0.1691], [6406; 0.2172], [7866; 0.2678]
+ * Given the difference between when each TCP segment was sent, and when its acknowledgement was received, what is the RTT value for each of the six segments?
+  * []
+ * What is the EstimatedRTT value (see page 277 in text) after the receipt of each ACK? Assume that the value of the EstimatedRTT is equal to the measured RTT for the first segment, and then is computed using the EstimatedRTT equation on page 277 for all subsequent segments.
 9. What is the length of each of the first six TCP segments?
 10. What is the minimum amount of available buffer space advertised at the receiver for the entire trace? Does the lack of receiver       buffer space ever throttle the sender?
 11. Are there any retransmitted segments in the trace file? What did you check for (in the trace) in order to answer this question?
