@@ -34,11 +34,17 @@
 12. What is the throughput (bytes transferred per unit time) for the TCP connection? Explain how you calculated this value.
  * 64Kb/s througput = (sender window size)/RTT
 13. Use the Time-Sequence-Graph (Stevens) plotting tool to view the sequence number versus time plot of segments being sent from the client to the server (Figure 2a and Figure 2b). For each of the two traces, can you identify where TCP's slow start phase begins and ends, and where congestion avoidance takes over? If you can, explain how. If not, explain why not. To better identify these phases, you may need to find the number of unacknowledged packets (or bytes) at different times and plot the unacknowledged packets (y-axis) as a function of time (x-axis). Note that the number of unacknowledged packets at different times can be found by comparing the number of packets that have been sent with the number of packets that have been acknowledged. After plotting the number of unacknowledged packets versus time, comment on ways in which the measured data differs from the idealized behavior of TCP that we've studied in the text.
- * bka
+ * For trace one the slow start in the beginning and for the second file the slow starts begin with every pakage drop. This was very easy to see in the graph-mode.
 14. Explain the relationship between (i) the congestion window, (ii) the receiver advertised window, (iii) the number of unacknowledged bytes, and (iv) the effective window at the sender.
- * bha
+ 1. How many packadges that can be sent at any time, is lowerthe (ii) and increases until packadge drop.
+ 2. How many bytes that can be recived at maximum, determines max size of (i).
+ 3. Determines how full the receiver buffer is.
+ 4. How many can be revied before the buffer is filled.
 15. Is it generally possible to find the congestion window size (i.e. cwnd) and how it changes with time, from the captured trace files?If so, please explain how. If not, please explain when and when not. Motivate your answer and give examples. Your answer may also benefit from trying to describe and discuss your answer in the context of the two prior questions, for example.
- * hdj
- 
+ *  We can se that it only increases in the slowstart and it is then linnear which means that the congestion window is no longer increasing. It can also be seen by looking in the trace files. And then we look after how many packadges is transmitted before we wait for the acks.
+16. What is the throughput of each of the connections in bps (bits per second)? What is the total bandwidth of the host on which the clients are running? Discuss the TCP fairness for this case.
+ * 2535059.04 2546529.99616 2575234.11673 2550558.9375
+17. 
+18. 
  ## Summary 1-12
 TCP is a way for two computers to comunicate over a network. The first thing that happens is a handshake. Then packet transmission is started. The window size depends on packadge loss
