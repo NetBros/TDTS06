@@ -30,4 +30,6 @@
 11. Are there any retransmitted segments in the trace file? What did you check for (in the trace) in order to answer this question?
  * No, we checked so that all bytes where transmitted in order
 12. How much data does the receiver typically acknowledge in an ACK? Can you identify cases where the receiver is ACKing every other received segment (see Table 3.2 on page 285 in the text).
+ * 
+ * Yes, No 162-170 is a clear example of this
 13. What is the throughput (bytes transferred per unit time) for the TCP connection? Explain how you calculated this value.
