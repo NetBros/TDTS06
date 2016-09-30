@@ -43,8 +43,10 @@
 15. Is it generally possible to find the congestion window size (i.e. cwnd) and how it changes with time, from the captured trace files?If so, please explain how. If not, please explain when and when not. Motivate your answer and give examples. Your answer may also benefit from trying to describe and discuss your answer in the context of the two prior questions, for example.
  *  We can se that it only increases in the slowstart and it is then linnear which means that the congestion window is no longer increasing. It can also be seen by looking in the trace files. And then we look after how many packadges is transmitted before we wait for the acks.
 16. What is the throughput of each of the connections in bps (bits per second)? What is the total bandwidth of the host on which the clients are running? Discuss the TCP fairness for this case.
- * 2535059.04 2546529.99616 2575234.11673 2550558.9375 is the bandwidth 
-17. 
-18. 
+ * 2535059.04 2546529.99616 2575234.11673 2550558.9375 is the bandwidth. The throughput for the different connection is pretty alike and therefor is TCP fair.
+17. What is the throughput of each of the connections in bps (bits per second)? What is the total bandwidth of the host on which the clients are running? Discuss the TCP fairness for this case.
+ * 23228367.1111 ger , 15644073.9555, 1687717.24444, 13501737.9555, 9654284.62224, 6279528, 5843994.48889, 3841144.53334, 3486446.57778..Here the throughput is very different and therefor not TCP fair.
+18. Discuss the TCP fairness for this case. For all of these questions you must take a closer look at the relationships between the characteristics of the different connections and discuss your findings in the context of the different experiments. You are expected to show that you understand the concept of TCP fairness and how the different scenarios may impact the throughput relationships that you observe and those that you may expect in general. To help the discussion you may for example want to create a scatter plot that show the estimated round trip time (RTT) and throughput against each other (for the different connections). You also want to carefully examine and discuss the above throughput equation and how it may apply to each scenario.
+ *  	
  ## Summary 1-12
 TCP is a way for two computers to comunicate over a network. The first thing that happens is a handshake. Then packet transmission is started. The window size depends on packadge loss
