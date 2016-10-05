@@ -47,8 +47,10 @@ class request_handler(threading.Thread):
                         temp_get = get_dict["GET"].split(" ")
                         get_dict["GET"] = "http://www.ida.liu.se/~TDTS04/labs/2011/ass2/error2.html" + " " + temp_get[1]
                         [header_dict, body] = server_conn(get_dict,self.conn,self.BUFFER_SIZE)
+
             #Creates the get request from the connected server to the proxy
         header = dict_2_byte(header_dict)
         server_request = header + body
-        self.conn.send(server_request)
+        if not body == b"":
+            self.conn.send(server_request)
         self.conn.close()
