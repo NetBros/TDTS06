@@ -25,7 +25,7 @@
 9. What is the minimum amount of available buffer space advertised at the receiver for the entire trace?
     * 5840
  * Does the lack of receiver buffer space ever throttle the sender?
-   * Yes, after packadge 31237 the buffer is stagnant and can't increase more 
+   * No
 10. Are there any retransmitted segments in the trace file? What did you check for (in the trace) in order to answer this question?
  * No, we checked so that all bytes where transmitted in order
 11. How much data does the receiver typically acknowledge in an ACK? Can you identify cases where the receiver is ACKing every other received segment (see Table 3.2 on page 285 in the text).
@@ -34,7 +34,7 @@
 12. What is the throughput (bytes transferred per unit time) for the TCP connection? Explain how you calculated this value.
  * 64Kb/s througput = (sender window size)/RTT
 13. Use the Time-Sequence-Graph (Stevens) plotting tool to view the sequence number versus time plot of segments being sent from the client to the server (Figure 2a and Figure 2b). For each of the two traces, can you identify where TCP's slow start phase begins and ends, and where congestion avoidance takes over? If you can, explain how. If not, explain why not. To better identify these phases, you may need to find the number of unacknowledged packets (or bytes) at different times and plot the unacknowledged packets (y-axis) as a function of time (x-axis). Note that the number of unacknowledged packets at different times can be found by comparing the number of packets that have been sent with the number of packets that have been acknowledged. After plotting the number of unacknowledged packets versus time, comment on ways in which the measured data differs from the idealized behavior of TCP that we've studied in the text.
- * For trace one the slow start in the beginning and for the second file the slow starts begin with every pakage drop. This was very easy to see in the graph-mode.
+ * We see a slow start in the beginning of the transmission of the first trace, where the sender-window gets bigger when all acks are recieved, in the second trace we do not find any typical slowstart where the windowsize gets bigger when all acks are recieved.
 14. Explain the relationship between (i) the congestion window, (ii) the receiver advertised window, (iii) the number of unacknowledged bytes, and (iv) the effective window at the sender.
  1. How many packadges that can be sent at any time, is lowerthe (ii) and increases until packadge drop.
  2. How many bytes that can be recived at maximum, determines max size of (i).
