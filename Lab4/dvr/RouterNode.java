@@ -26,34 +26,44 @@ public class RouterNode {
     myID = ID;
     this.sim = sim;
     myGUI =new GuiTextArea("  Output window for Router #"+ ID + "  ");
-
+    sendUpdate();
     System.arraycopy(costs, 0, this.costs, 0, RouterSimulator.NUM_NODES);
   }
 
   //--------------------------------------------------
   public void recvUpdate(RouterPacket pkt) {
+    myGUI.println("recv update");
   // recive info about the connecting neighbours
   boolean forwardFlagg = false;
   for (int i=0; i< totalNodes ; i++){
       int costToRoute = myForward[pkt.sourceid+totalNodes]+pkt.mincost[i+totalNodes];
       if (myForward[i+totalNodes]>costToRoute){
-        myForward[i] = pkt.sourceid;
+        if(myForward[pkt.sourceid] == pkt.sourceid){
+          myForward[i] = pkt.sourceid;
+        }
+          myForward[i] = myForward[pkt.sourceid];
         myForward[i+totalNodes] = costToRoute;
         forwardFlagg = true;
       }
     }
 // updating myForward depending on RouterPacket mincost
   if(forwardFlagg){
-    sendUpdate(pkt);
+    sendUpdate();
   }
 
   }
 
 
   //--------------------------------------------------
-  private void sendUpdate(RouterPacket pkt) {
-    pkt.mincost = myForward;
-    sim.toLayer2(pkt);
+  private void sendUpdate() {
+    myGUI.println("send update");
+    for (int i = 0;i<totalNodes ;i++ ) {
+      if ((costs[i] != 999 ) && (i != myID)) {
+        RouterPacket myPacket = new RouterPacket(myID,i,myForward);
+        myPacket.mincost = myForward;
+        sim.toLayer2(myPacket);
+      }
+    }
     //Update RouterPacket mincost with help from updated myForward
   }
 
@@ -65,12 +75,26 @@ public class RouterNode {
 			"  at time " + sim.getClocktime());
     for (int i = 0;i<totalNodes ;i++ ) {
       myGUI.println("Fastest route to " + i + " is through " +myForward[i] + " with cost " + myForward[i+totalNodes]);
-
     }
   }
 
   //--------------------------------------------------
   public void updateLinkCost(int dest, int newcost) {
+
+    myGUI.println("updateLinkCost");
+    costs[dest] = newcost;
+  // recive info about the connecting neighbours
+    bool forwardFlagg = false;
+    int oldCost = myForward[dest+totalNodes];
+    if(newcost < oldCost){
+      myForward[dest] = dest;
+      myForward[dest+totalNodes] = newcost;
+      forwardFlagg = true;
+    }
+    // updating myForward depending on RouterPacket mincost
+  if(forwardFlagg){
+    sendUpdate();
+  }
   }
 
 }
