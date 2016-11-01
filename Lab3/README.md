@@ -38,9 +38,10 @@
 14. Explain the relationship between (i) the congestion window, (ii) the receiver advertised window, (iii) the number of unacknowledged bytes, and (iv) the effective window at the sender.
  1. How many packadges that can be sent at any time, is lowerthe (ii) and increases until packadge drop.
  2. How many bytes that can be recived at maximum, determines max size of (i).
- 3. Determines how full the receiver buffer is.
+ 3. How much data has been sent but not yet acknowledged.
  4. How many can be revied before the buffer is filled.
-15. Is it generally possible to find the congestion window size (i.e. cwnd) and how it changes with time, from the captured trace files?If so, please explain how. If not, please explain when and when not. Motivate your answer and give examples. Your answer may also benefit from trying to describe and discuss your answer in the context of the two prior questions, for example.
+15. Is it generally possible to find the congestion window size (i.e. cwnd) and how it changes with time, from the captured trace files? If so, please explain how. If not, please explain when and when not. Motivate your answer and give examples. Your answer may also benefit from trying to describe and discuss your answer in the context of the two prior questions, for example.
+ * In generall it can only be found by looking at the amount of sent packadges before a recive. This can be missleading, since it can be hard to keep track of if all packadges that was going to be sent have been sent before the ack is recived.
  *  We can se that it only increases in the slowstart and it is then linnear which means that the congestion window is no longer increasing. It can also be seen by looking in the trace files. And then we look after how many packadges is transmitted before we wait for the acks.
 16. What is the throughput of each of the connections in bps (bits per second)? What is the total bandwidth of the host on which the clients are running? Discuss the TCP fairness for this case.
  * 2535059.04 2546529.99616 2575234.11673 2550558.9375 is the bandwidth. The throughput for the different connection is pretty alike and therefor is TCP fair.
