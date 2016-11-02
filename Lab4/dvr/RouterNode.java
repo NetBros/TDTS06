@@ -49,17 +49,21 @@ public class RouterNode {
       int old_cost = myForwardTable[nodeWeWant2][myID];
       int old_node = myForwardVia[nodeWeWant2];
       for (int nodeWeWant3=0;nodeWeWant3<totalNodes ;nodeWeWant3++ ) {
-        if(myForwardVia[nodeWeWant3]<999){
-          int new_cost = myForwardTable[myForwardVia[nodeWeWant3]][myID] + myForwardTable[nodeWeWant3][nodeWeWant2];
-          //myGUI.println("cost from " + nodeWeWant3 + " to " + nodeWeWant2 +" is " + myForwardTable[nodeWeWant3][nodeWeWant2]);
-          //myGUI.println("cost from " + myID +" to " +nodeWeWant3+ " is " + myForwardTable[nodeWeWant3][myID]);
-          //myGUI.println("old_cost: "+old_cost);
-          //myGUI.println("new_cost: " +new_cost);
+        if((myForwardVia[nodeWeWant3]<999) && (nodeWeWant3 != myID)){
+          int cost2forwardNode = myForwardTable[myForwardVia[nodeWeWant3]][myID];
+          int costFromForward2node = myForwardTable[nodeWeWant2][myForwardVia[nodeWeWant3]];
+          int new_cost = cost2forwardNode + costFromForward2node;
+
+          myGUI.println("Wewant2 " + nodeWeWant2 + "\tWewant3  " + nodeWeWant3 + "\tRoute "+ myForwardVia[nodeWeWant3]);
+          myGUI.println("cost from " + myForwardVia[nodeWeWant3] + " to " + nodeWeWant2 +" is " + myForwardTable[nodeWeWant2][nodeWeWant3]);
+          myGUI.println("cost from " + myID +" to " +myForwardVia[nodeWeWant3]+ " is " + myForwardTable[myForwardVia[nodeWeWant3]][myID]);
+          myGUI.println("old_cost: "+old_cost);
+          myGUI.println("new_cost: " +new_cost);
         if ((new_cost<old_cost) || ((new_cost<999)&&(old_node == 999))) {
           myGUI.println("Updating cost");
           updated = true;
           old_cost = new_cost;
-          old_node = nodeWeWant3;
+          old_node = myForwardVia[nodeWeWant3];
         }
         }
       }
@@ -167,7 +171,12 @@ public class RouterNode {
 
   //--------------------------------------------------
   public void updateLinkCost(int dest, int newcost) {
+    for (int i=0;i<totalNodes ;i++ ) {
+      if (myForwardVia[i]==dest)
+        myForwardTable[dest][myID]+= (newcost-costs[dest]);
+      }
+    costs[dest] = newcost;
+    sendUpdate();
 
-  //  myGUI.println("updateLinkCost");
 }
 }
